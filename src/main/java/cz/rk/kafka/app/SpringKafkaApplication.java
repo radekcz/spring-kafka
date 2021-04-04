@@ -1,7 +1,6 @@
 package cz.rk.kafka.app;
 
 import cz.rk.kafka.producer.KafkaProducer;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
@@ -29,7 +28,7 @@ public class SpringKafkaApplication implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        kafkaProducer.sendMessage("New message from Spring Kafka application");
+        kafkaProducer.sendMessage("Message from Spring Kafka application");
     }
 
 
