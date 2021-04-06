@@ -28,7 +28,7 @@ public class KafkaProducer {
     }
 
     public void sendMessage(String message) {
-        logger.info(String.format("#### -> Producing message -> %s", message));
+        logger.info(String.format("---> Producing message ---> %s", message));
         ListenableFuture<SendResult<String, String>> future = kafkaTemplate.send(topic, message);
         future.addCallback(new ListenableFutureCallback<SendResult<String, String>>() {
             @Override

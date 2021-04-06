@@ -9,7 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 
 @SpringBootApplication
-@ComponentScan({"cz.rk.kafka.app", "cz.rk.kafka.producer", "cz.rk.kafka.consumer"})
+@ComponentScan({"cz.rk.kafka.controller", "cz.rk.kafka.app", "cz.rk.kafka.producer", "cz.rk.kafka.consumer"})
 public class SpringKafkaApplication implements ApplicationRunner {
 
     final private KafkaProducer kafkaProducer;

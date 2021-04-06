@@ -17,7 +17,7 @@ public class KafkaConsumer {
 
     @KafkaListener(topics = "first_topic", groupId = "group-id")
     public void consume(String message) throws IOException {
-        logger.info(String.format("#### -> Consumed message -> %s", message));
+        logger.info(String.format("<--- Consuming message <--- %s", message));
     }
 
 }
