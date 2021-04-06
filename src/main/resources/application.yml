@@ -1,2 +1,4 @@
 kafka:
   bootstrapAddress: localhost:9093
+  producer:
+    topic: first_topic
