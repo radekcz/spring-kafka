@@ -1,6 +1,7 @@
 package cz.rk.kafka.app;
 
 import cz.rk.kafka.producer.KafkaProducer;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
@@ -12,23 +13,25 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan({"cz.rk.kafka.controller", "cz.rk.kafka.app", "cz.rk.kafka.producer", "cz.rk.kafka.consumer"})
 public class SpringKafkaApplication implements ApplicationRunner {
 
-    final private KafkaProducer kafkaProducer;
+    final private KafkaProducer kafkaProducerDefault;
+    final private KafkaProducer kafkaProducerInputTopic;
 
 
     /**
      * constructor
-     *
-     * we don't even need an @Autowired on our constructor
-     * @param kafkaProducer
+     * @param kafkaProducerDefault
+     * @param kafkaProducerInputTopic
      */
-    public SpringKafkaApplication(KafkaProducer kafkaProducer) {
-        this.kafkaProducer = kafkaProducer;
+    public SpringKafkaApplication(KafkaProducer kafkaProducerDefault, @Qualifier("kafka-producer-topic-input") KafkaProducer kafkaProducerInputTopic) {
+        this.kafkaProducerDefault = kafkaProducerDefault;
+        this.kafkaProducerInputTopic = kafkaProducerInputTopic;
     }
 
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        kafkaProducer.sendMessage("Message from Spring Kafka application");
+        kafkaProducerDefault.sendMessage("Default message from Spring Kafka application");
+        kafkaProducerInputTopic.sendMessage("Input topic message from Spring Kafka application");
     }
 
 

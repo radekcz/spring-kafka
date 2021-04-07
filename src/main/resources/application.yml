@@ -5,3 +5,5 @@ kafka:
   bootstrapAddress: localhost:9093
   producer:
     topic: first_topic
+    topic-input: input_topic
+    topic-output: output_topic
